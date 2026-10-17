@@ -5,15 +5,15 @@ const mySpeciality = "I specialized in web development using .NET technologies a
 const myExperience = "I have over 5 years of experience in web development.";
 const messages = [welcomeMessage, myName, myProfession, mySpeciality, myExperience];
 var currentMessageIndex = 0;
-var welcomeElement;
+var welcomeElement,cursor;
 
 window.onload = function () {
     welcomeElement = document.getElementById("welcome");
-    if(!welcomeElement) 
+    if (!welcomeElement)
         return;
 
+    cursor = document.getElementById("cursor");
     setInterval(function () {
-        var cursor = document.getElementById("cursor");
         if (cursor)
             cursor.style.visibility = cursor.style.visibility === "hidden" ? "visible" : "hidden";
     }, 400);
@@ -22,11 +22,11 @@ window.onload = function () {
 }
 
 function writeMessage() {
-    if(!welcomeElement) 
+    if (!welcomeElement)
         return;
 
     let message = messages[currentMessageIndex]
-    
+
     if (welcomeElement.innerHTML.length < message.length) {
         welcomeElement.innerHTML += message[welcomeElement.innerHTML.length];
         setTimeout(writeMessage, 120);
